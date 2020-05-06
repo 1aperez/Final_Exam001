@@ -1,49 +1,108 @@
-""" Playing with Functions 
-    For this second problem use only the function calls available and the starting variable to make ALL of the print statements correct.
-    Note you may only modify the characters to the left of result = ...
-    You may not modify any other lines of code, you may not use symbols like '+', '*', '//', '/', or '-'
+"""
+    In this project you will use the classes available
+    to create a story of events so that the print
+    at the end returns True.
 """
 
-
-def performCalculations(value):
-    result = f3(f1((f2(f2(f2(f2(value, value),value),value),value)), value), f2(f2(f1(value, f3(f2(f2(f1(value, value), f1(value, value)), f1(value, value)),value)), value), value))
-    return result
-
-
-def f1(v1, v2):
-    return v1 // v2
+def tell_story():
+    a = Bird()
+    b = Dragon()
+    c = Gorilla()
+    # Generate  as many other objects as you want
 
 
-def f2(v3, v4):
-    return v4 + v3
 
 
-def f3(v1, v2):
-    return v2 - v1
+    # Have objects interact
 
 
-def f4(v):
-    return v * v
+    # replace the replace_me_object
+    replace_me_object = b
+    final_phrase = replace_me_object.talk()
+    return final_phrase
 
 
-def f5(v1, v2):
-    return v1 / v2
+
+class Animal:
+    def __init__(self):
+        self.phrase = ""
+    def eat(self, other):
+        self.phrase += str(other.phrase)
+    def talk(self):
+        return self.phrase
+
+class Beetle(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "ztrauq kcalb"
 
 
-def tester(input, output):
-    actual_result = performCalculations(input)
-    expected_result = output
-    print_text = "In: " + str(input) + " | "
-    if expected_result == actual_result:
-        print_text += "Correct: " + str(expected_result) + " == " + str(actual_result)
-    else:
-        print_text += "Incorrect: " + str(expected_result) + " != " + str(actual_result)
-    return print_text
+class Bird(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "Tweet"
+
+class Dragon(Animal):
+    def __init__(self):
+        super().__init__()
+    def eat(self, other):
+        self.phrase = str(other.phrase[::-1])
+    def talk(self):
+        return self.phrase[0::2]
+
+class Gorilla(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "123456789"
+    def beat(self, other1, other2):
+        self.phrase = str(other1.phrase) + " " + str(other2.phrase)
+
+class Chipmunk(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "Munchd"
+    def eat(self,other):
+        self.phrase = str(other.phrase[0])
+
+class Snake(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "Hiss"
+    def eat(self,other):
+        self.phrase = str(other.phrase).toLower()
+
+class Cobra(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "Snorflek"
+    def eat(self,other):
+        self.phrase = str(other.phrase).toUpper()
+
+class Goat(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "Brae"
+    def eat(self,other):
+        self.phrase = str(other.phrase)+str(",")
+
+class Sheep(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "GypJ"
+
+class Donkey(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase = "vozx"
+    def eat(self,other):
+        self.phrase = str(other.phrase)+str("!")
+
+class Pig(Animal):
+    def __init__(self):
+        super().__init__()
+        self.phrase ="eduj"
+
 
 
 if __name__ == "__main__":
-    print(tester(350, 696))
-    print(tester(37, 70))
-    print(tester(-40, -85))
-    print(tester(-2, -9))
-    print(tester(15, 26))
+    print(tell_story()=="Sphinx of black quartz, judge my vow!")
